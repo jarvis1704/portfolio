@@ -1,5 +1,6 @@
 "use client"
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image'; // Import next/image
 import { ChevronRight, ExternalLink, Github, Linkedin, Mail, Phone, MapPin, Code, BookOpen, Briefcase, Award, Menu, X, Download, Sun, Moon } from "lucide-react";
 
 // Resume Data (remains the same)
@@ -11,8 +12,8 @@ const resumeData = {
   location: "Guwahati, India",
   github: "https://github.com/jarvis1704", 
   linkedin: "https://www.linkedin.com/in/biprangshu-das-34017427a", 
-  resumeUrl: "./BiprangshuDas_Resume.pdf", 
-  imageUrl: "./IMG-20250101-WA0021~2.jpg",
+  resumeUrl: "/BiprangshuDas_Resume.pdf", 
+  imageUrl: "/IMG-20250101-WA0021~2.jpg",
   about: [
     "I'm a passionate Android Developer and aspiring Frontend Engineer with experience in building responsive and interactive applications using modern technologies. Currently focused on native Android development with Kotlin and Jetpack Compose, I also excel in web technologies like React.js and Tailwind CSS.",
     "As a student at Tezpur University pursuing a B.Tech in Electronics and Communications Engineering, I'm actively involved in tech communities, including the Google Developer Student Club. I love solving problems through clean, efficient code and creating seamless user experiences.",
@@ -87,7 +88,7 @@ export default function Portfolio() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const [userThemePreference, setUserThemePreference] = useState('system');
-  const [effectiveTheme, setEffectiveTheme] = useState('light'); 
+  const [effectiveTheme, setEffectiveTheme] = useState('light');
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
@@ -110,7 +111,7 @@ export default function Portfolio() {
         currentEffectiveTheme = 'dark';
       } else if (userThemePreference === 'light') {
         currentEffectiveTheme = 'light';
-      } else { 
+      } else {
         currentEffectiveTheme = systemPrefersDark ? 'dark' : 'light';
       }
       setEffectiveTheme(currentEffectiveTheme);
@@ -159,7 +160,6 @@ export default function Portfolio() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Effect to handle body scroll when mobile menu is open
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -167,7 +167,7 @@ export default function Portfolio() {
       document.body.style.overflow = '';
     }
     return () => {
-      document.body.style.overflow = ''; // Cleanup on component unmount
+      document.body.style.overflow = '';
     };
   }, [isMenuOpen]);
 
@@ -195,17 +195,17 @@ export default function Portfolio() {
       newPreference = 'dark';
     } else if (userThemePreference === 'dark') {
       newPreference = 'system';
-    } else { 
+    } else {
       newPreference = 'light';
     }
     setUserThemePreference(newPreference);
     localStorage.setItem('theme_preference', newPreference);
   };
-  
+
   return (
     <div className="font-sans bg-gray-50 dark:bg-slate-900 text-gray-800 dark:text-slate-200 min-h-screen selection:bg-indigo-500 selection:text-white dark:selection:bg-indigo-400 dark:selection:text-slate-900">
-      <Header 
-        activeSection={activeSection} 
+      <Header
+        activeSection={activeSection}
         isScrolled={isScrolled}
         isMenuOpen={isMenuOpen}
         toggleMenu={toggleMenu}
@@ -215,8 +215,8 @@ export default function Portfolio() {
         hasMounted={hasMounted}
         userThemePreference={userThemePreference}
       />
-      
-      <main className={`${isMenuOpen ? 'blur-sm' : ''} transition-all duration-300`}> {/* Apply blur to main content when menu is open */}
+
+      <main className={`${isMenuOpen ? 'blur-sm' : ''} transition-all duration-300`}>
         <HeroSection data={resumeData} scrollToSection={scrollToSection} />
         <AboutSection data={resumeData.about} />
         <ExperienceSection data={resumeData.experiences} />
@@ -225,7 +225,7 @@ export default function Portfolio() {
         <EducationSection data={resumeData.education} />
         <ContactSection data={resumeData} />
       </main>
-      
+
       <Footer data={resumeData} />
     </div>
   );
@@ -251,7 +251,7 @@ function Header({ activeSection, isScrolled, isMenuOpen, toggleMenu, scrollToSec
   const initials = name.split(' ').map(n => n[0]).join('');
 
   const getThemeIconAndLabel = () => {
-    let icon = <div className="w-5 h-5" />; 
+    let icon = <div className="w-5 h-5" />;
     let ariaLabel = "Toggle theme";
 
     if (hasMounted) {
@@ -261,7 +261,7 @@ function Header({ activeSection, isScrolled, isMenuOpen, toggleMenu, scrollToSec
       } else if (userThemePreference === 'dark') {
         icon = <Sun size={22} />;
         ariaLabel = "Switch to system preference";
-      } else { 
+      } else {
         const systemIsDark = typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches;
         icon = systemIsDark ? <Sun size={22}/> : <Moon size={22}/>;
         ariaLabel = "Switch to light mode";
@@ -272,10 +272,9 @@ function Header({ activeSection, isScrolled, isMenuOpen, toggleMenu, scrollToSec
 
   const { icon: themeToggleIcon, ariaLabel: themeToggleAriaLabel } = getThemeIconAndLabel();
 
-  // Conditionally apply backdrop-blur only if the menu is open and we are on a client
   const headerBaseClass = "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out";
-  const scrolledOrMenuOpenClass = isScrolled || isMenuOpen 
-      ? `bg-white dark:bg-slate-800/90 ${isMenuOpen && hasMounted ? "dark:backdrop-blur-sm" : ""} shadow-lg py-3` 
+  const scrolledOrMenuOpenClass = isScrolled || isMenuOpen
+      ? `bg-white dark:bg-slate-800/90 ${isMenuOpen && hasMounted ? "dark:backdrop-blur-sm" : ""} shadow-lg py-3`
       : "bg-transparent py-5";
   const mobileNavClass = isMenuOpen && hasMounted ? "backdrop-blur-sm" : "";
 
@@ -286,7 +285,7 @@ function Header({ activeSection, isScrolled, isMenuOpen, toggleMenu, scrollToSec
         <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors cursor-pointer" onClick={() => scrollToSection('home')}>
           {initials}
         </div>
-        
+
         <nav className="hidden md:flex items-center space-x-4 lg:space-x-6">
           {navItems.map((item) => (
             <button key={item.id} onClick={() => scrollToSection(item.id)}
@@ -301,26 +300,25 @@ function Header({ activeSection, isScrolled, isMenuOpen, toggleMenu, scrollToSec
             {themeToggleIcon}
           </button>
         </nav>
-        
+
         <div className="md:hidden flex items-center">
             <button onClick={onThemeToggle} disabled={!hasMounted}
                 className="mr-2 p-2 rounded-full text-gray-700 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-700 focus:outline-none transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 aria-label={themeToggleAriaLabel}>
              {themeToggleIcon}
             </button>
-            <button className="text-gray-700 dark:text-slate-300 focus:outline-none z-[60]" onClick={toggleMenu} aria-label="Toggle menu"> {/* Ensure toggle is above overlay */}
+            <button className="text-gray-700 dark:text-slate-300 focus:outline-none z-[60]" onClick={toggleMenu} aria-label="Toggle menu">
               {isMenuOpen ? <X size={28} className="text-indigo-600 dark:text-indigo-400"/> : <Menu size={28} />}
             </button>
         </div>
       </div>
-      
-      {/* Mobile Navigation Overlay */}
-      <div 
-        className={`md:hidden fixed inset-0 bg-white/90 dark:bg-slate-900/90 transition-opacity duration-300 ease-in-out ${mobileNavClass} ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} z-[55]`} // Increased z-index for overlay
-        onClick={toggleMenu} // Close menu if overlay is clicked
+
+      <div
+        className={`md:hidden fixed inset-0 bg-white/90 dark:bg-slate-900/90 transition-opacity duration-300 ease-in-out ${mobileNavClass} ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} z-[55]`}
+        onClick={toggleMenu}
       ></div>
-      <div 
-        className={`md:hidden fixed top-0 right-0 h-full w-3/4 max-w-xs bg-white dark:bg-slate-800 shadow-xl transition-transform duration-300 ease-in-out transform ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} z-[60] pt-20`} // Ensure menu content is above overlay
+      <div
+        className={`md:hidden fixed top-0 right-0 h-full w-3/4 max-w-xs bg-white dark:bg-slate-800 shadow-xl transition-transform duration-300 ease-in-out transform ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} z-[60] pt-20`}
       >
         <div className="container mx-auto px-4 py-4 flex flex-col items-center space-y-6">
           {navItems.map((item) => (
@@ -341,20 +339,23 @@ function Header({ activeSection, isScrolled, isMenuOpen, toggleMenu, scrollToSec
 
 // Hero Section
 function HeroSection({ data, scrollToSection }) {
+  // Determine if imageUrl is an external URL or a local public path
+  const isExternalImage = data.imageUrl && (data.imageUrl.startsWith('http://') || data.imageUrl.startsWith('https://'));
+
   return (
     <section id="home" className="min-h-screen flex items-center pt-20 pb-10 md:pt-24 md:pb-16 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-slate-900 dark:via-slate-800/70 dark:to-slate-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
           <div className="md:w-3/5 text-center md:text-left">
-            <p className="text-lg md:text-xl text-indigo-600 dark:text-indigo-400 font-semibold mb-2 md:mb-3 opacity-0 animate-fadeInUp">Hello, I'm</p>
+            <p className="text-lg md:text-xl text-indigo-600 dark:text-indigo-400 font-semibold mb-2 md:mb-3 opacity-0 animate-fadeInUp">Hello, I'm</p> {/* Fixed: I'm -> I'm */}
             <h1 className="group text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-5 text-gray-900 dark:text-white opacity-0 animate-fadeInUp animation-delay-100">
               {data.name.split("").map((char, index) => (
                 <span
                   key={index}
                   className="inline-block transition-all duration-200 ease-out md:group-hover:text-indigo-500 md:dark:group-hover:text-indigo-300 md:group-hover:-translate-y-2"
-                  style={{ transitionDelay: `${index * 30}ms` }} 
+                  style={{ transitionDelay: `${index * 30}ms` }}
                 >
-                  {char === " " ? "\u00A0" : char} 
+                  {char === " " ? "\u00A0" : char}
                 </span>
               ))}
             </h1>
@@ -382,7 +383,19 @@ function HeroSection({ data, scrollToSection }) {
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 dark:from-indigo-600 dark:to-purple-700 opacity-20 dark:opacity-30 animate-pulse"></div>
               <div className="absolute inset-2 sm:inset-3 rounded-full bg-white dark:bg-slate-700 shadow-xl overflow-hidden">
                  {data.imageUrl ? (
-                    <img src={data.imageUrl} alt={data.name} className="w-full h-full object-cover"/>
+                    isExternalImage ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={data.imageUrl} alt={data.name} className="w-full h-full object-cover"/>
+                    ) : (
+                      <Image
+                          src={data.imageUrl}
+                          alt={data.name}
+                          width={384} // Provide appropriate width, e.g., max size of lg:w-96
+                          height={384} // Provide appropriate height
+                          className="w-full h-full object-cover"
+                          priority // Good for LCP element
+                      />
+                    )
                  ) : (
                     <div className="w-full h-full flex items-center justify-center text-indigo-600 dark:text-indigo-400 font-bold text-7xl sm:text-8xl md:text-9xl">
                         {data.name.split(' ').map(n => n[0]).join('')}
@@ -415,13 +428,13 @@ function AboutSection({ data }) {
         <SectionTitle>About Me</SectionTitle>
         <div className="max-w-3xl mx-auto opacity-0 animate-fadeInUp">
           {data.map((paragraph, index) => (
-             <p key={index} className="text-lg text-gray-700 dark:text-slate-300 mb-6 leading-relaxed" 
-                dangerouslySetInnerHTML={{ 
+             <p key={index} className="text-lg text-gray-700 dark:text-slate-300 mb-6 leading-relaxed"
+                dangerouslySetInnerHTML={{
                     __html: paragraph
                         .replace(/Android Developer/g, '<span class="text-indigo-600 dark:text-indigo-400 font-semibold">Android Developer</span>')
                         .replace(/Frontend Engineer/g, '<span class="text-indigo-600 dark:text-indigo-400 font-semibold">Frontend Engineer</span>')
                         .replace(/Kotlin and Jetpack Compose/g, '<span class="text-indigo-600 dark:text-indigo-400 font-semibold">Kotlin and Jetpack Compose</span>')
-                        .replace(/React\.js and Tailwind CSS/g, '<span class="text-indigo-600 dark:text-indigo-400 font-semibold">React.js and Tailwind CSS</span>') 
+                        .replace(/React\.js and Tailwind CSS/g, '<span class="text-indigo-600 dark:text-indigo-400 font-semibold">React.js and Tailwind CSS</span>')
                 }} />
           ))}
         </div>
@@ -533,7 +546,7 @@ function EducationSection({ data }) {
         <div className="max-w-3xl mx-auto">
           <div className="relative">
             <div className="hidden md:block absolute left-1/2 top-0 bottom-0 transform -translate-x-1/2 w-1 bg-indigo-200 dark:bg-slate-700 rounded-full"></div>
-            <div className="md:hidden absolute left-[calc(1rem+0.125rem-0.5px)] top-0 bottom-0 w-0.5 bg-indigo-200 dark:bg-slate-700 rounded-full"></div> 
+            <div className="md:hidden absolute left-[calc(1rem+0.125rem-0.5px)] top-0 bottom-0 w-0.5 bg-indigo-200 dark:bg-slate-700 rounded-full"></div>
             {data.map((edu, index) => (
               <EducationCard key={index} education={edu} index={index} />
             ))}
@@ -584,7 +597,7 @@ function ContactSection({ data }) {
         setError('Please fill in all fields.'); setIsSubmitting(false); return;
     }
     try {
-        await new Promise(resolve => setTimeout(resolve, 1500)); 
+        await new Promise(resolve => setTimeout(resolve, 1500));
         setIsSubmitted(true); setFormData({ name: '', email: '', subject: '', message: ''});
         setTimeout(() => setIsSubmitted(false), 5000);
     } catch (err) { setError(err.message || 'An error occurred. Please try again.');
@@ -596,8 +609,8 @@ function ContactSection({ data }) {
         <SectionTitle>Get In Touch</SectionTitle>
         <div className="max-w-5xl mx-auto flex flex-col lg:flex-row gap-10 md:gap-16 opacity-0 animate-fadeInUp">
           <div className="lg:w-2/5">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">Let's Connect</h3>
-            <p className="text-gray-700 dark:text-slate-300 mb-8 text-lg leading-relaxed"> I'm always open to new opportunities, collaborations, or just a friendly chat about technology. Feel free to reach out! </p>
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">Let's Connect</h3> {/* Fixed: Let's -> Let's */}
+            <p className="text-gray-700 dark:text-slate-300 mb-8 text-lg leading-relaxed"> I'm always open to new opportunities, collaborations, or just a friendly chat about technology. Feel free to reach out! </p> {/* Fixed: I'm -> I'm */}
             <div className="space-y-6">
               <ContactItem icon={<Mail size={20}/>} title="Email" content={data.email} href={`mailto:${data.email}`} />
               <ContactItem icon={<Phone size={20}/>} title="Phone" content={data.phone} href={`tel:${data.phone}`} />
@@ -608,7 +621,7 @@ function ContactSection({ data }) {
           <div className="lg:w-3/5">
             <div className="bg-white dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-xl dark:shadow-slate-700/50">
               <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">Send a Message</h3>
-              {isSubmitted && ( <div className="bg-green-100 dark:bg-green-500/20 border-l-4 border-green-500 dark:border-green-400 text-green-700 dark:text-green-300 p-4 rounded-md mb-6 flex items-center shadow" role="alert"> <svg className="w-6 h-6 mr-3 fill-current" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg> <p>Your message has been sent successfully! I'll get back to you soon.</p> </div> )}
+              {isSubmitted && ( <div className="bg-green-100 dark:bg-green-500/20 border-l-4 border-green-500 dark:border-green-400 text-green-700 dark:text-green-300 p-4 rounded-md mb-6 flex items-center shadow" role="alert"> <svg className="w-6 h-6 mr-3 fill-current" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg> <p>Your message has been sent successfully! I'll get back to you soon.</p> </div> )} {/* Fixed: I'll -> I'll */}
               {error && ( <div className="bg-red-100 dark:bg-red-500/20 border-l-4 border-red-500 dark:border-red-400 text-red-700 dark:text-red-300 p-4 rounded-md mb-6 shadow" role="alert"> <p>{error}</p> </div> )}
               <form onSubmit={handleSubmit} noValidate>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
