@@ -8,7 +8,6 @@ const resumeData = {
   name: "Biprangshu Das",
   tagline: "Android Developer & Frontend Enthusiast",
   email: "dasbiprangshu@gmail.com",
-  phone: "6000838977",
   location: "Guwahati, India",
   github: "https://github.com/jarvis1704", 
   linkedin: "https://www.linkedin.com/in/biprangshu-das-34017427a", 
@@ -632,7 +631,6 @@ function ContactSection({ data }) {
             <p className="text-gray-700 dark:text-slate-300 mb-8 text-lg leading-relaxed"> I&apos;m always open to new opportunities, collaborations, or just a friendly chat about technology. Feel free to reach out! </p> 
             <div className="space-y-6">
               <ContactItem icon={<Mail size={20}/>} title="Email" content={data.email} href={`mailto:${data.email}`} />
-              <ContactItem icon={<Phone size={20}/>} title="Phone" content={data.phone} href={`tel:${data.phone}`} />
               <ContactItem icon={<MapPin size={20}/>} title="Location" content={data.location} />
               <div className="flex gap-4 mt-10"> <SocialButton icon={<Github />} href={data.github} label="GitHub" /> <SocialButton icon={<Linkedin />} href={data.linkedin} label="LinkedIn" /> </div>
             </div>
