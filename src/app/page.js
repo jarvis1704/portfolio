@@ -609,8 +609,8 @@ function ContactSection({ data }) {
         <SectionTitle>Get In Touch</SectionTitle>
         <div className="max-w-5xl mx-auto flex flex-col lg:flex-row gap-10 md:gap-16 opacity-0 animate-fadeInUp">
           <div className="lg:w-2/5">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">Let's Connect</h3> 
-            <p className="text-gray-700 dark:text-slate-300 mb-8 text-lg leading-relaxed"> I'm always open to new opportunities, collaborations, or just a friendly chat about technology. Feel free to reach out! </p> 
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">Let&apos;s Connect</h3> 
+            <p className="text-gray-700 dark:text-slate-300 mb-8 text-lg leading-relaxed"> I&apos;m always open to new opportunities, collaborations, or just a friendly chat about technology. Feel free to reach out! </p> 
             <div className="space-y-6">
               <ContactItem icon={<Mail size={20}/>} title="Email" content={data.email} href={`mailto:${data.email}`} />
               <ContactItem icon={<Phone size={20}/>} title="Phone" content={data.phone} href={`tel:${data.phone}`} />
@@ -621,7 +621,7 @@ function ContactSection({ data }) {
           <div className="lg:w-3/5">
             <div className="bg-white dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-xl dark:shadow-slate-700/50">
               <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">Send a Message</h3>
-              {isSubmitted && ( <div className="bg-green-100 dark:bg-green-500/20 border-l-4 border-green-500 dark:border-green-400 text-green-700 dark:text-green-300 p-4 rounded-md mb-6 flex items-center shadow" role="alert"> <svg className="w-6 h-6 mr-3 fill-current" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg> <p>Your message has been sent successfully! I'll get back to you soon.</p> </div> )} 
+              {isSubmitted && ( <div className="bg-green-100 dark:bg-green-500/20 border-l-4 border-green-500 dark:border-green-400 text-green-700 dark:text-green-300 p-4 rounded-md mb-6 flex items-center shadow" role="alert"> <svg className="w-6 h-6 mr-3 fill-current" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg> <p>Your message has been sent successfully! I&apos;ll get back to you soon.</p> </div> )} 
               {error && ( <div className="bg-red-100 dark:bg-red-500/20 border-l-4 border-red-500 dark:border-red-400 text-red-700 dark:text-red-300 p-4 rounded-md mb-6 shadow" role="alert"> <p>{error}</p> </div> )}
               <form onSubmit={handleSubmit} noValidate>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -637,16 +637,6 @@ function ContactSection({ data }) {
         </div>
       </div>
     </section>
-  );
-}
-function ContactItem({ icon, title, content, href }) {
-  const InteractionWrapper = href ? 'a' : 'div';
-  return (
-    <InteractionWrapper href={href} className={`flex items-center p-4 bg-white dark:bg-slate-800/70 backdrop-blur-sm rounded-lg shadow-sm hover:shadow-md dark:shadow-slate-700/40 dark:hover:shadow-indigo-500/20 transition-all duration-300 group ${href ? 'cursor-pointer hover:bg-indigo-50 dark:hover:bg-slate-700' : ''}`}
-        {...(href && href.startsWith('http') && { target: "_blank", rel: "noopener noreferrer" })}>
-      <div className="p-3 bg-indigo-100 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full mr-4 group-hover:scale-110 transition-transform"> {icon} </div>
-      <div> <h4 className="text-lg font-semibold text-gray-800 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">{title}</h4> <p className="text-gray-600 dark:text-slate-300">{content}</p> </div>
-    </InteractionWrapper>
   );
 }
 
