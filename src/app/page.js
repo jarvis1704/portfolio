@@ -347,7 +347,7 @@ function HeroSection({ data, scrollToSection }) {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
           <div className="md:w-3/5 text-center md:text-left">
-            <p className="text-lg md:text-xl text-indigo-600 dark:text-indigo-400 font-semibold mb-2 md:mb-3 opacity-0 animate-fadeInUp">Hello, I'm</p> 
+            <p className="text-lg md:text-xl text-indigo-600 dark:text-indigo-400 font-semibold mb-2 md:mb-3 opacity-0 animate-fadeInUp">Hello, I&apos;m</p> 
             <h1 className="group text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-5 text-gray-900 dark:text-white opacity-0 animate-fadeInUp animation-delay-100">
               {data.name.split("").map((char, index) => (
                 <span
@@ -417,6 +417,25 @@ function SocialButton({ icon, href, label }) {
       className="w-12 h-12 rounded-full flex items-center justify-center bg-gray-200 dark:bg-slate-700 hover:bg-indigo-600 dark:hover:bg-indigo-500 text-gray-700 dark:text-slate-300 hover:text-white dark:hover:text-white transition-all duration-300 transform hover:scale-110 shadow-sm hover:shadow-md">
       {icon}
     </a>
+  );
+}
+
+
+function ContactItem({ icon, title, content, href }) {
+  const Wrapper = href ? 'a' : 'div';
+  return (
+    <Wrapper
+      href={href}
+      target={href ? "_blank" : undefined}
+      rel={href ? "noopener noreferrer" : undefined}
+      className="flex items-start space-x-3 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+    >
+      <div className="mt-1 text-indigo-600 dark:text-indigo-400">{icon}</div>
+      <div>
+        <p className="font-semibold text-gray-900 dark:text-white">{title}</p>
+        <p className="text-gray-700 dark:text-slate-300">{content}</p>
+      </div>
+    </Wrapper>
   );
 }
 
