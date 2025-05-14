@@ -347,7 +347,7 @@ function HeroSection({ data, scrollToSection }) {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
           <div className="md:w-3/5 text-center md:text-left">
-            <p className="text-lg md:text-xl text-indigo-600 dark:text-indigo-400 font-semibold mb-2 md:mb-3 opacity-0 animate-fadeInUp">Hello, I'm</p> {/* Fixed: I'm -> I'm */}
+            <p className="text-lg md:text-xl text-indigo-600 dark:text-indigo-400 font-semibold mb-2 md:mb-3 opacity-0 animate-fadeInUp">Hello, I'm</p> 
             <h1 className="group text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-5 text-gray-900 dark:text-white opacity-0 animate-fadeInUp animation-delay-100">
               {data.name.split("").map((char, index) => (
                 <span
@@ -609,8 +609,8 @@ function ContactSection({ data }) {
         <SectionTitle>Get In Touch</SectionTitle>
         <div className="max-w-5xl mx-auto flex flex-col lg:flex-row gap-10 md:gap-16 opacity-0 animate-fadeInUp">
           <div className="lg:w-2/5">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">Let's Connect</h3> {/* Fixed: Let's -> Let's */}
-            <p className="text-gray-700 dark:text-slate-300 mb-8 text-lg leading-relaxed"> I'm always open to new opportunities, collaborations, or just a friendly chat about technology. Feel free to reach out! </p> {/* Fixed: I'm -> I'm */}
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">Let's Connect</h3> 
+            <p className="text-gray-700 dark:text-slate-300 mb-8 text-lg leading-relaxed"> I'm always open to new opportunities, collaborations, or just a friendly chat about technology. Feel free to reach out! </p> 
             <div className="space-y-6">
               <ContactItem icon={<Mail size={20}/>} title="Email" content={data.email} href={`mailto:${data.email}`} />
               <ContactItem icon={<Phone size={20}/>} title="Phone" content={data.phone} href={`tel:${data.phone}`} />
@@ -621,7 +621,7 @@ function ContactSection({ data }) {
           <div className="lg:w-3/5">
             <div className="bg-white dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-xl dark:shadow-slate-700/50">
               <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">Send a Message</h3>
-              {isSubmitted && ( <div className="bg-green-100 dark:bg-green-500/20 border-l-4 border-green-500 dark:border-green-400 text-green-700 dark:text-green-300 p-4 rounded-md mb-6 flex items-center shadow" role="alert"> <svg className="w-6 h-6 mr-3 fill-current" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg> <p>Your message has been sent successfully! I'll get back to you soon.</p> </div> )} {/* Fixed: I'll -> I'll */}
+              {isSubmitted && ( <div className="bg-green-100 dark:bg-green-500/20 border-l-4 border-green-500 dark:border-green-400 text-green-700 dark:text-green-300 p-4 rounded-md mb-6 flex items-center shadow" role="alert"> <svg className="w-6 h-6 mr-3 fill-current" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg> <p>Your message has been sent successfully! I'll get back to you soon.</p> </div> )} 
               {error && ( <div className="bg-red-100 dark:bg-red-500/20 border-l-4 border-red-500 dark:border-red-400 text-red-700 dark:text-red-300 p-4 rounded-md mb-6 shadow" role="alert"> <p>{error}</p> </div> )}
               <form onSubmit={handleSubmit} noValidate>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
