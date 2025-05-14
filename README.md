@@ -5,8 +5,7 @@
 
 Welcome to the official repository for my personal portfolio website! This project showcases my skills, projects, and journey as an **Android Developer & Frontend Enthusiast**. Built with modern web technologies, it's designed to be sleek, responsive, and provide a seamless user experience.
 
-**🚀 Live Demo:** [your-portfolio-url.vercel.app](https://your-portfolio-url.vercel.app)
-<!-- 🔗 **Important:** Replace 'https://your-portfolio-url.vercel.app' with your actual Vercel deployment URL! -->
+**🚀 Live Demo:** [your-portfolio-url.vercel.app](https:biprangshudas.vercel.app)
 
 ---
 
