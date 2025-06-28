@@ -42,6 +42,14 @@ const resumeData = {
   ],
   projects: [
     {
+      title: "Chattrix",
+      subtitle: "Chat and Connect",
+      description: "Developed a native Android chat application where users can chat in real time with other users who have an account in the app. Features include: Real time chat, read reciepts and lots more!",
+      technologies: ["Kotlin", "Jetpack Compose", "Retrofit", "Dagger Hilt", "Timber", "Firebase"],
+      links: [ { label: "GitHub", icon: <Github size={16} />, url: "https://github.com/jarvis1704/Chattrix" }],
+      color: "from-blue-500 to-indigo-600"
+    },
+    {
       title: "Blood Donation App",
       subtitle: "Client project for Red Cross Society",
       description: "Developed a native Android application for the Red Cross Society to streamline the blood donation process. Features include global announcements, real-time blood requests, and user management.",
