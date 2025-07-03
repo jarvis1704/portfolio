@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image'; // Import next/image
-import { ChevronRight, ExternalLink, Github, Linkedin, Mail, Phone, MapPin, Code, BookOpen, Briefcase, Award, Menu, X, Download, Sun, Moon } from "lucide-react";
+import { ChevronRight, ExternalLink, Github, Linkedin, Mail, Phone, MapPin, Code, BookOpen, Briefcase, Award, Menu, X, Download, Sun, Moon, Play } from "lucide-react";
 
 // Resume Data (remains the same)
 const resumeData = {
@@ -41,6 +41,14 @@ const resumeData = {
     }
   ],
   projects: [
+    {
+      title: "Lofigram",
+      subtitle: "Your calm space",
+      description: "Developed a native Android chat application where users can stream lofi music, while being productive with features such as pomodoro, sleep timer, or have fun with online games or chat with all users of the app in Global chat and lots more!",
+      technologies: ["Kotlin", "Jetpack Compose", "Retrofit", "Dagger Hilt", "Timber", "Firebase"],
+      links: [ { label: "GitHub", icon: <Github size={16} />, url: "https://github.com/Psydrite01/lofigram-public" }, {label: "Play Store", icon: <Play size={16}/>, url: "https://play.google.com/store/apps/details?id=com.psydrite.lofigram"}],
+      color: "from-blue-500 to-indigo-600"
+    },
     {
       title: "Chattrix",
       subtitle: "Chat and Connect",
