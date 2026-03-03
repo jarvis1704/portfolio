@@ -59,8 +59,16 @@ const resumeData = {
       subtitle: "Subscription Manager with AI",
       description: "Developed a privacy-focused personal finance tool to track recurring subscriptions and forecast burn rate. Features full Material 3 Expressive UI with interactive haptics, Google Gemini API integration for smart optimization, and offline-first architecture using Room Database for 100% data privacy.",
       technologies: ["Kotlin", "Jetpack Compose", "Gemini API", "Room Database"],
-      links: [{ label: "GitHub", icon: <Github size={16} />, url: "https://github.com/jarvis1704/SubTracker" }],
+      links: [{ label: "GitHub", icon: <Github size={16} />, url: "https://github.com/jarvis1704/SubTracker" }, { label: "Play Store", icon: <Play size={16} />, url: "https://play.google.com/store/apps/details?id=com.biprangshu.subtracker" }],
       color: "from-green-500 to-emerald-600"
+    },
+    {
+      title: "Attendo",
+      subtitle: "Smart Attendance Tracker",
+      description: "An Android application designed to help users efficiently manage and track their class attendance. Features a modern UI built with Material 3, custom attendance requirement thresholds, and offline data persistence.",
+      technologies: ["Kotlin", "Jetpack Compose", "Room Database", "Hilt", "DataStore"],
+      links: [{ label: "GitHub", icon: <Github size={16} />, url: "https://github.com/jarvis1704/Attendo" }, { label: "Play Store", icon: <Play size={16} />, url: "https://play.google.com/store/apps/details?id=com.biprangshu.attendo" }],
+      color: "from-purple-500 to-pink-600"
     },
     {
       title: "Lofigram",
