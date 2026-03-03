@@ -12,7 +12,7 @@ export const metadata = { /* ... */ };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} font-sans`}>
+    <html lang="en" className={`${inter.variable} font-sans`} suppressHydrationWarning>
       <head></head>
       <body>
         {children}

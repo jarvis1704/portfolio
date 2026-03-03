@@ -1,59 +1,80 @@
 "use client"
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image'; // Import next/image
-import { ChevronRight, ExternalLink, Github, Linkedin, Mail, Phone, MapPin, Code, BookOpen, Briefcase, Award, Menu, X, Download, Sun, Moon, Play } from "lucide-react";
+import { ChevronRight, ExternalLink, Github, Linkedin, Mail, Phone, MapPin, Code, BookOpen, Briefcase, Award, Menu, X, Download, Sun, Moon, Play, Smartphone } from "lucide-react";
 
 // Resume Data (remains the same)
 const resumeData = {
   name: "Biprangshu Das",
-  tagline: "Android Developer & Frontend Enthusiast",
+  tagline: "Android Developer & Engineering Student",
   email: "dasbiprangshu@gmail.com",
-  location: "Guwahati, India",
-  github: "https://github.com/jarvis1704", 
-  linkedin: "https://www.linkedin.com/in/biprangshu-das-34017427a", 
-  resumeUrl: "/BiprangshuDas_Resume.pdf", 
+  phone: "(+91) 60008-38977",
+  location: "Guwahati, Assam, India",
+  github: "https://github.com/jarvis1704",
+  linkedin: "https://www.linkedin.com/in/biprangshu-das-34017427a",
+  resumeUrl: "/BiprangshuDas_Resume.pdf",
   imageUrl: "/IMG-20250101-WA0021~2.jpg",
   about: [
-    "I'm a passionate Android Developer and aspiring Frontend Engineer with experience in building responsive and interactive applications using modern technologies. Currently focused on native Android development with Kotlin and Jetpack Compose, I also excel in web technologies like React.js and Tailwind CSS.",
-    "As a student at Tezpur University pursuing a B.Tech in Electronics and Communications Engineering, I'm actively involved in tech communities, including the Google Developer Student Club. I love solving problems through clean, efficient code and creating seamless user experiences.",
+    "I'm a passionate Android Developer with 2+ years of experience building high-performance native mobile applications using Kotlin and Jetpack Compose. Deeply interested in Computer Science engineering, with a strong focus on clean code, UI/UX design, and AI integration.",
+    "As a student at Tezpur University pursuing a B.Tech in Electronics and Communications Engineering, I'm actively involved in tech communities, including the Google Developer Student Club. I have a proven track record of delivering feature-rich apps with offline capabilities and complex backend integrations.",
     "My interests extend to competitive activities like Chess, Debate, and Quizzes, alongside a fascination for Cinematic Storytelling and a growing understanding of Financial Literacy."
   ],
   experiences: [
     {
-      title: "Development Team Member",
-      company: "GDSC Tezpur University",
-      period: "Aug 2023 – Present",
-      location: "Tezpur, Assam",
+      title: "Contributor (Open Source)",
+      company: "GirlScript Summer of Code",
+      period: "Jul 2025 – Oct 2025",
+      location: "Remote",
       description: [
-        "Actively contribute to a Google Developer Student Club focused on building a vibrant tech community and fostering innovative projects.",
-        "Participate in app development initiatives as a core team member, applying modern development practices."
+        "Contributed to ShopSmart, an open-source e-commerce app built using Kotlin and Jetpack Compose.",
+        "Collaborated with a distributed team of developers to implement new UI features and fix critical bugs."
       ]
     },
     {
-      title: "WebMaster Team Member",
-      company: "TechXetra, Tezpur University",
-      period: "Oct 2017 – Jul 2023",
+      title: "Core Team Member (Android)",
+      company: "GDSC Tezpur University",
+      period: "2024 – 2025",
       location: "Tezpur, Assam",
       description: [
-        "Contributed to Tezpur University's annual technical fest, TechXetra, by developing and maintaining its official website.",
-        "Utilized skills in Tailwind CSS, React.js, TypeScript, and GitHub to create a responsive and informative platform for the event."
+        "Collaborated with a team of developers to build community-centric applications.",
+        "Mentored junior students in Android Development, focusing on Kotlin and Jetpack Compose basics.",
+        "Participated in app development as part of the Core team."
+      ]
+    },
+    {
+      title: "Web Developer",
+      company: "TechXetra, Tezpur University",
+      period: "Sep 2024 – Nov 2024",
+      location: "Tezpur, Assam",
+      description: [
+        "Co-developed the official website for TechXetra, the annual technical fest of Tezpur University.",
+        "Utilized React.js, Tailwind CSS, and TypeScript to create a responsive event portal.",
+        "Managed version control and deployment pipelines via GitHub."
       ]
     }
   ],
   projects: [
     {
+      title: "SubTracker",
+      subtitle: "Subscription Manager with AI",
+      description: "Developed a privacy-focused personal finance tool to track recurring subscriptions and forecast burn rate. Features full Material 3 Expressive UI with interactive haptics, Google Gemini API integration for smart optimization, and offline-first architecture using Room Database for 100% data privacy.",
+      technologies: ["Kotlin", "Jetpack Compose", "Gemini API", "Room Database"],
+      links: [{ label: "GitHub", icon: <Github size={16} />, url: "https://github.com/jarvis1704/SubTracker" }],
+      color: "from-green-500 to-emerald-600"
+    },
+    {
       title: "Lofigram",
-      subtitle: "Your calm space",
-      description: "Developed a native Android streaming application where users can stream lofi music, while being productive with features such as pomodoro, sleep timer, or have fun with online games or chat with all users of the app in Global chat and lots more!",
-      technologies: ["Kotlin", "Jetpack Compose", "Retrofit", "Dagger Hilt", "Timber", "Firebase"],
+      subtitle: "Productivity & Music Streaming App",
+      description: "Engineered a 'Calm Space' application combining music streaming with productivity tools like Pomodoro timers. Optimized media playback using ExoPlayer for seamless background streaming. Implemented Global Chat with AI integration using Firebase Realtime Database.",
+      technologies: ["Kotlin", "Jetpack Compose", "ExoPlayer", "Firebase"],
       links: [ { label: "GitHub", icon: <Github size={16} />, url: "https://github.com/Psydrite01/lofigram-public" }, {label: "Play Store", icon: <Play size={16}/>, url: "https://play.google.com/store/apps/details?id=com.psydrite.lofigram"}],
       color: "from-blue-500 to-indigo-600"
     },
     {
       title: "Chattrix",
-      subtitle: "Chat and Connect",
-      description: "Developed a native Android chat application where users can chat in real time with other users who have an account in the app. Features include: Real time chat, read reciepts and lots more!",
-      technologies: ["Kotlin", "Jetpack Compose", "Retrofit", "Dagger Hilt", "Timber", "Firebase"],
+      subtitle: "Real-Time Messaging Application",
+      description: "Developed a real-time chat application featuring read receipts, user discovery, and end-to-end data syncing. Built fully custom Material 3 UI components with fluid animations and state management.",
+      technologies: ["Kotlin", "Jetpack Compose", "Firebase"],
       links: [ { label: "GitHub", icon: <Github size={16} />, url: "https://github.com/jarvis1704/Chattrix" }],
       color: "from-blue-500 to-indigo-600"
     },
@@ -67,9 +88,9 @@ const resumeData = {
     },
     {
       title: "NewsApp",
-      subtitle: "A dynamic news reader application",
-      description: "Created a news reader app that fetches and displays articles from an API. Implemented functionalities like news categorization, search, and bookmarking articles for future reading.",
-      technologies: ["Kotlin", "Jetpack Compose", "Retrofit", "Dagger Hilt", "ROOM Database"],
+      subtitle: "News Reader Application",
+      description: "Created a news reader app which fetches news from an API and displays it. Implemented offline caching using Room Database and dependency injection with Dagger Hilt.",
+      technologies: ["Kotlin", "Retrofit", "Room", "Dagger Hilt"],
       links: [ { label: "GitHub", icon: <Github size={16} />, url: "https://github.com/jarvis1704/News-App" }],
       color: "from-blue-500 to-indigo-600"
     },
@@ -83,13 +104,14 @@ const resumeData = {
     }
   ],
   skills: {
-    languages: ["Kotlin", "Java", "Python", "HTML5", "CSS3", "JavaScript", "TypeScript"],
-    frameworksLibraries: ["Jetpack Compose", "Retrofit", "Dagger Hilt", "Room Database", "React.js", "Tailwind CSS"],
-    toolsTechnologies: ["Android Studio", "Visual Studio Code", "Git", "GitHub", "Linux", "Firebase"]
+    languages: ["Kotlin", "Java", "Python", "SQL", "JavaScript", "HTML5", "CSS3", "TypeScript"],
+    androidDevelopment: ["Jetpack Compose", "Material 3", "LottieFiles", "Coroutines", "Dagger Hilt", "Retrofit", "Room DB", "Shared Preferences", "WorkManager", "ExoPlayer", "Google Play Payments", "AdMob"],
+    frameworksLibraries: ["React.js", "Tailwind CSS"],
+    toolsTechnologies: ["Git", "GitHub", "Firebase (Auth, Firestore, Realtime DB)", "Android Studio", "Gradle (Kotlin DSL)", "Linux (Arch)", "Visual Studio Code"]
   },
   education: [
     { institution: "Tezpur University", degree: "Bachelor of Technology in Electronics and Communications Engineering", period: "2023-Present", location: "Tezpur, Assam", grade: "CGPA: 7.56" },
-    { institution: "Spring Dale International School", degree: "Major: Class 11 and 12", period: "Jul. 2021 - Mar. 2023", location: "Guwahati, Assam", grade: "CGPA: 8.6/10" },
+    { institution: "Spring Dale International School", degree: "Higher Secondary (Class 12) — Science Stream (PCM)", period: "2022 – 2024", location: "Guwahati, Assam", grade: "CGPA: 8.6/10" },
     { institution: "Maharishi Vidya Mandir", degree: "Major: Class 2 - 10", period: "Apr. 2012 - Mar. 2021", location: "Guwahati, Assam", grade: "CGPA: 9.0/10" }
   ],
   interests: ["Chess", "Debate", "Quiz", "Cinematic Storytelling", "Financial Literacy"]
@@ -112,7 +134,7 @@ export default function Portfolio() {
 
   useEffect(() => {
     if (hasMounted) {
-      const storedUserPref = localStorage.getItem('theme_preference') || 'system';
+      const storedUserPref = window.localStorage.getItem('theme_preference') || 'system';
       setUserThemePreference(storedUserPref);
     }
   }, [hasMounted]);
@@ -214,7 +236,7 @@ export default function Portfolio() {
       newPreference = 'light';
     }
     setUserThemePreference(newPreference);
-    localStorage.setItem('theme_preference', newPreference);
+    window.localStorage.setItem('theme_preference', newPreference);
   };
 
   return (
@@ -466,9 +488,8 @@ function AboutSection({ data }) {
                 dangerouslySetInnerHTML={{
                     __html: paragraph
                         .replace(/Android Developer/g, '<span class="text-indigo-600 dark:text-indigo-400 font-semibold">Android Developer</span>')
-                        .replace(/Frontend Engineer/g, '<span class="text-indigo-600 dark:text-indigo-400 font-semibold">Frontend Engineer</span>')
                         .replace(/Kotlin and Jetpack Compose/g, '<span class="text-indigo-600 dark:text-indigo-400 font-semibold">Kotlin and Jetpack Compose</span>')
-                        .replace(/React\.js and Tailwind CSS/g, '<span class="text-indigo-600 dark:text-indigo-400 font-semibold">React.js and Tailwind CSS</span>')
+                        .replace(/AI integration/g, '<span class="text-indigo-600 dark:text-indigo-400 font-semibold">AI integration</span>')
                 }} />
           ))}
         </div>
@@ -543,6 +564,7 @@ function ProjectCard({ project, index }) {
 function SkillsSection({ data }) {
   const skillCategories = [
     { title: "Languages", icon: <Code size={24} className="text-indigo-600 dark:text-indigo-400" />, skills: data.languages },
+    { title: "Android Development", icon: <Smartphone size={24} className="text-indigo-600 dark:text-indigo-400" />, skills: data.androidDevelopment },
     { title: "Frameworks & Libraries", icon: <BookOpen size={24} className="text-indigo-600 dark:text-indigo-400" />, skills: data.frameworksLibraries },
     { title: "Tools & Technologies", icon: <Briefcase size={24} className="text-indigo-600 dark:text-indigo-400" />, skills: data.toolsTechnologies }
   ];
@@ -550,7 +572,7 @@ function SkillsSection({ data }) {
     <section id="skills" className="py-16 md:py-24 bg-gray-50 dark:bg-slate-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle>Skills & Expertise</SectionTitle>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
           {skillCategories.map((category, index) => ( <SkillCard key={index} category={category} index={index} /> ))}
         </div>
       </div>
@@ -647,6 +669,7 @@ function ContactSection({ data }) {
             <p className="text-gray-700 dark:text-slate-300 mb-8 text-lg leading-relaxed"> I&apos;m always open to new opportunities, collaborations, or just a friendly chat about technology. Feel free to reach out! </p> 
             <div className="space-y-6">
               <ContactItem icon={<Mail size={20}/>} title="Email" content={data.email} href={`mailto:${data.email}`} />
+              <ContactItem icon={<Phone size={20}/>} title="Phone" content={data.phone} href={`tel:${data.phone}`} />
               <ContactItem icon={<MapPin size={20}/>} title="Location" content={data.location} />
               <div className="flex gap-4 mt-10"> <SocialButton icon={<Github />} href={data.github} label="GitHub" /> <SocialButton icon={<Linkedin />} href={data.linkedin} label="LinkedIn" /> </div>
             </div>
